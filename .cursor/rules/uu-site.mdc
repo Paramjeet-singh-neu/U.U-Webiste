@@ -1,0 +1,20 @@
+---
+description: Project rules for the u.u 3D marketing site
+globs:
+alwaysApply: true
+---
+
+# u.u 3D site rules
+
+- The plan is in PLAN.md. Follow its phases in order; don't build ahead.
+- All visible copy comes from content/site.ts and content/futures.ts. Never hardcode copy in components. Never invent product claims, statistics, prices or privacy terms; leave a clearly marked TODO instead.
+- Stack: Next.js App Router, TypeScript strict, Tailwind, React Three Fiber + drei, GSAP ScrollTrigger, Lenis, zustand. Ask before adding any other dependency.
+- Exactly one <Canvas> for the whole site, in components/three/Experience.tsx. Scenes mount only near their chapter.
+- Camera position comes only from CameraRig.tsx reading store progress. No other component moves the camera.
+- Colors come from CSS variables / the token table in PLAN.md section 2. Fonts: Schibsted Grotesk for UI and present-you, Newsreader for headlines and future-you.
+- Sentence case. No all-caps labels. No fade-up animation on every section. Motion is scroll-driven or answers a user action.
+- Every feature must work with prefers-reduced-motion and without WebGL (static fallback images).
+- Important text stays in HTML, not baked into textures.
+- Performance budgets in PLAN.md section 3 are acceptance criteria. Use Draco GLB and KTX2 textures, dispose unused geometry, adaptive DPR.
+- The waitlist form never writes directly to a production database from the client.
+- Show a plan and wait for approval before large changes. Keep each change small enough to review.
